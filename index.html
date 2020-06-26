@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="conteiner" id="conteiner">
+        <div class="logo">
+            <h1 id="logo">Indice Calórico</h1>
+            <h3 class="instrucao" id="instrucao">Insira os Dados para calcular:</h3>
+        </div>
+        <form class="formulario" id="formulario">
+            <label class="label">Gramas</label>
+            <input class="input" type="number" id="gramas" name="gramas" placeholder="Gramas da Porção" required>
+            <br>
+            <label class="label">Calorias</label>
+            <input class="input" type="number" id="calorias" name="calorias" placeholder="Calorias da Porção" required>
+            <br>
+            <input class="submit-button" type="submit" value="Calcule">
+        </form>
+        <div class="resultado" id="resultado">
+            <p class="indice" id="indice">Resultado</p>
+            <input class="clear" id="limpar" type="submit" value="Limpar" onclick="resetaPagina()">
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        const resetaPagina = () => {
+            document.getElementById('formulario').reset();
+            document.getElementById('indice').style.display = 'none';
+            document.getElementById('limpar').style.display = 'none';
+
+        }
+
+
+
+        const indCalorico = function(gramas, calorias) {
+
+            const indiceCalorico = 100 * calorias / gramas / 100;
+            const indiceFinal = indiceCalorico.toFixed(2)
+            return indiceFinal
+        }
+
+        const enviarResultado = (resultado) => {
+            if (resultado < 1) {
+                document.getElementById('indice').innerHTML = resultado + '<br>Alimento de Baixa Caloria';
+                document.getElementById('indice').style.display = 'block';
+                document.getElementById('limpar').style.display = 'flex';
+                document.getElementById('indice').style.background = '#d8ea60';
+
+            }
+            if (resultado >= 1 && resultado < 3) {
+                document.getElementById('indice').innerHTML = resultado + '<br>Alimento Regular';
+                document.getElementById('indice').style.display = 'block';
+                document.getElementById('limpar').style.display = 'flex';
+                document.getElementById('indice').style.background = '#f8e64a';
+            }
+            if (resultado >= 3 && resultado < 4) {
+                document.getElementById('indice').innerHTML = resultado + '<br>Alimento de Calórico<br>ATENÇÃO AO CONSUMIR';
+                document.getElementById('indice').style.display = 'block';
+                document.getElementById('limpar').style.display = 'flex';
+                document.getElementById('indice').style.background = '#f0b13c';
+            }
+            if (resultado >= 4) {
+                document.getElementById('indice').innerHTML = resultado + '<br>Alimento de Alta Caloria<br>ATENÇÃO AO CONSUMIR';
+                document.getElementById('indice').style.display = 'block';
+                document.getElementById('limpar').style.display = 'flex';
+                document.getElementById('indice').style.background = '#ff5a83';
+            } else {
+                return false;
+            }
+
+        }
+
+        var entrada = document.getElementById('formulario');
+        gramasPorcao = document.getElementById('gramas');
+        caloriasPorcao = document.getElementById('calorias');
+
+        entrada.addEventListener('submit', function(e) {
+
+            var resultado = indCalorico(gramasPorcao.value, caloriasPorcao.value);
+            enviarResultado(resultado)
+            e.preventDefault();
+
+            return false;
+
+
+        });
+    </script>
+
+</body>
+
+</html>
