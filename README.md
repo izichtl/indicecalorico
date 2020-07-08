@@ -10,4 +10,9 @@ Este projeto utiliza.
 * HTML, CSS e Javascript. 
 * [Dillinger](http://dillinger.io) markdown editor.
 
+![Screen](/img/indicecalorico.jpg "Screen com resultados")
+
+
+
+
 ___________________________________________________________//
