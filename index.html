@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./img/indice.ico" type="image/x-icon" />
-
-
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+
+
     <title>iCalórico</title>
+
 </head>
 
 <body>
@@ -58,7 +59,7 @@
 
 
 
-        const indCalorico = function(gramas, calorias) {
+        const indCalorico = function (gramas, calorias) {
 
             const indiceCalorico = 100 * calorias / gramas / 100;
             const indiceFinal = indiceCalorico.toFixed(2)
@@ -100,7 +101,7 @@
         gramasPorcao = document.getElementById('gramas');
         caloriasPorcao = document.getElementById('calorias');
 
-        entrada.addEventListener('submit', function(e) {
+        entrada.addEventListener('submit', function (e) {
 
             var resultado = indCalorico(gramasPorcao.value, caloriasPorcao.value);
             enviarResultado(resultado)
